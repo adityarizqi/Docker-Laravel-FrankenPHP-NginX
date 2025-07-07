@@ -36,7 +36,7 @@ docker-compose up -d
 Make necessary scripts executable:
 
 ```shell
-chmod +x ./php ./composer ./npm ./production.sh ./setup.sh
+chmod +x ./php ./composer ./npm
 ```
 
 Install dependencies and prepare framework:
