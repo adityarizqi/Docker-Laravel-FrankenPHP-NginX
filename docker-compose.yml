@@ -22,10 +22,6 @@ services:
         volumes:
             - ./docker/nginx/conf.d/default.development.conf:/etc/nginx/templates/default.conf.template
             - ./docker/nginx/ssl:/etc/nginx/ssl:ro
-        environment:
-            - APP_DOMAIN=${APP_DOMAIN}
-            - APP_CRM_DOMAIN=${APP_CRM_DOMAIN}
-        command: /bin/sh -c 'envsubst "$${APP_DOMAIN} $${APP_CRM_DOMAIN}" < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.development.conf && nginx -g "daemon off;"'
         depends_on:
             - php
             - mailpit

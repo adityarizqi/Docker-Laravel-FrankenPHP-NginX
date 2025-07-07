@@ -23,8 +23,6 @@ mkcert -install -cert-file ./docker/nginx/ssl/cert.pem -key-file ./docker/nginx/
 ### Step 3: Environment Setup
 
 -   Copy the `.env.example` file to `.env`
-
--   Configure your environment. For development ensure that the `APP_DOMAIN` variable is set to `panel.docker.localhost` and APP_CRM_DOMAIN set to `crm.docker.localhost`
     > **Note**: Make sure you have installed the SSL certificates before proceeding.
 
 ### Step 4: Start the Containers
@@ -53,4 +51,4 @@ Install dependencies and prepare framework:
 
 > **Note**: The `./` at the beginning of each command is an alias to `docker compose exec php`, allowing you to run commands within the container without entering it.
 
-You're done! Open https://panel.docker.localhost to view application.
+You're done! Open https://laravel.docker.localhost to view application.

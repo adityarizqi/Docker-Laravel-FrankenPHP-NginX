@@ -7,7 +7,7 @@
 
 # as Nginx is the entrypoint.
 :8080 {
-    @allowedHosts host crm.docker.localhost panel.docker.localhost app.indolat.com crm.indolat.com app.indolat.web.id crm.indolat.web.id
+    @allowedHosts host laravel.docker.localhost
 
     handle @allowedHosts {
         root * /srv/public

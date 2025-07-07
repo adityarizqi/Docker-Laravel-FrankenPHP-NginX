@@ -22,6 +22,11 @@ RUN apk add --no-cache \
 RUN pecl install redis-6.2.0 \
     && docker-php-ext-enable redis
 
+# Install Excimer extension using PECL
+RUN pecl channel-update pecl.php.net \
+    && pecl install excimer \
+    && docker-php-ext-enable excimer
+
 # Install other extensions
 RUN docker-php-ext-install -j$(nproc) \
     bcmath \
