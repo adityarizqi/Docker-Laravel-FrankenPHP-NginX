@@ -1,0 +1,57 @@
+x-php: &php
+  build:
+    context: docker/php
+    dockerfile: php.dockerfile
+    args:
+      ENVIRONMENT: production
+  restart: unless-stopped
+  working_dir: /srv
+  volumes:
+    - .:/srv
+
+x-logging: &logging
+  logging:
+    driver: json-file
+    options:
+      max-size: 100m
+      max-file: 10
+
+services:
+  nginx:
+    <<: *logging
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx/conf.d/default.production.conf:/etc/nginx/templates/default.conf.template
+      - ./docker/nginx/ssl:/etc/nginx/ssl:ro
+    environment:
+      - APP_DOMAIN=${APP_DOMAIN}
+      - APP_CRM_DOMAIN=${APP_CRM_DOMAIN}
+    command: /bin/sh -c 'envsubst "$${APP_DOMAIN} $${APP_CRM_DOMAIN}" < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.production.conf && nginx -g "daemon off;"'
+    depends_on:
+      - php
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  php:
+    <<: [*php, *logging]
+    environment:
+      - SERVER_NAME=:8080
+
+  scheduler:
+    <<: [*php, *logging]
+    command: supercronic /srv/docker/php/config/schedule.cron
+    healthcheck:
+      disable: true
+
+  queue:
+    <<: [*php, *logging]
+    command: php artisan queue:work --timeout=0
+    healthcheck:
+      disable: true

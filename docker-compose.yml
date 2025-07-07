@@ -1,0 +1,57 @@
+x-php: &php
+    build:
+        context: docker/php
+        dockerfile: php.dockerfile
+        args:
+            ENVIRONMENT: development
+    restart: unless-stopped
+    working_dir: /srv
+    volumes:
+        - .:/srv
+        - ~/.composer:/home/composer/.cache/composer
+        - ~/.composer/auth.json:/config/composer/auth.json
+        - ./vendor:/srv/vendor:delegated
+
+services:
+    nginx:
+        image: nginx:1.27-alpine
+        restart: unless-stopped
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./docker/nginx/conf.d/default.development.conf:/etc/nginx/templates/default.conf.template
+            - ./docker/nginx/ssl:/etc/nginx/ssl:ro
+        environment:
+            - APP_DOMAIN=${APP_DOMAIN}
+            - APP_CRM_DOMAIN=${APP_CRM_DOMAIN}
+        command: /bin/sh -c 'envsubst "$${APP_DOMAIN} $${APP_CRM_DOMAIN}" < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.development.conf && nginx -g "daemon off;"'
+        depends_on:
+            - php
+            - mailpit
+
+    node:
+        image: node:22-alpine
+        user: node
+        working_dir: /srv
+        entrypoint: ["tail", "-f", "/dev/null"]
+        volumes:
+            - .:/srv
+            - ./node_modules:/srv/node_modules
+
+    php:
+        <<: *php
+        environment:
+            - SERVER_NAME=:8080
+
+    scheduler:
+        <<: *php
+        command: php artisan schedule:work
+
+    queue:
+        <<: *php
+        command: php artisan queue:work --timeout=0
+
+    mailpit:
+        image: axllent/mailpit
+        restart: unless-stopped
