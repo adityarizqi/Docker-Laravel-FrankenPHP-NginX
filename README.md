@@ -8,9 +8,9 @@ To use it:
 
 ## Docker Setup Guide
 
-### Step 1: Clone the Project
+### Step 1: Copy to your Laravel Project
 
-Clone this repository and navigate into it. If you are on Windows, I recommend using WSL2, or at least utilize Git Bash instead of CMD or PowerShell to execute the next commands along.
+Copy all files and folders from this repository into the root of your existing Laravel project. If you are on Windows, I recommend using WSL2, or at least utilize Git Bash instead of CMD or PowerShell to execute the next commands along.
 
 ### Step 2: Download mkcert
 
