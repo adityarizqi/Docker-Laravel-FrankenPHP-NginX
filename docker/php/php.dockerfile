@@ -34,7 +34,6 @@ RUN docker-php-ext-install -j$(nproc) \
     intl \
     pcntl \
     pdo_pgsql \
-    curl \
     mbstring \
     zip
 

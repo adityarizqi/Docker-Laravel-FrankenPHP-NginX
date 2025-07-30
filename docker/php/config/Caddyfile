@@ -7,20 +7,13 @@
 
 # as Nginx is the entrypoint.
 :8080 {
-    @allowedHosts host laravel.docker.localhost
+    root * /srv/public
+    encode zstd br gzip
 
-    handle @allowedHosts {
-        root * /srv/public
-        encode zstd br gzip
-
-        php_server {
-            index /worker.php
-        }
-
-        header -X-Powered-By
-        header -Server
+    php_server {
+        index /worker.php
     }
 
-    # Optional: block all other hosts (deny access)
-    respond "Forbidden" 403
+    header -X-Powered-By
+    header -Server
 }
