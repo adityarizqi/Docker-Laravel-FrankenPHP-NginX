@@ -1,8 +1,16 @@
-# Docker Setup Guide
+## Laravel Octane Docker Setup (with FrankenPHP)
+### How It Works
+This setup provides a ready-to-use Docker environment optimized for Laravel Octane with FrankenPHP. It is designed for both local development and production builds, including automatic HTTPS using mkcert.
 
-### Step 1: Clone the Project
+To use it:
+- Copy all files and folders from this repository into the root of your existing Laravel project.
+- Follow the steps below to set up Docker, generate SSL certificates, and start your Laravel Octane app in seconds.
 
-Clone this repository and navigate into it. If you are on Windows, I recommend using WSL2, or at least utilize Git Bash instead of CMD or PowerShell to execute the next commands along.
+## Docker Setup Guide
+
+### Step 1: Copy to your Laravel Project
+
+Copy all files and folders from this repository into the root of your existing Laravel project. If you are on Windows, I recommend using WSL2, or at least utilize Git Bash instead of CMD or PowerShell to execute the next commands along.
 
 ### Step 2: Download mkcert
 
