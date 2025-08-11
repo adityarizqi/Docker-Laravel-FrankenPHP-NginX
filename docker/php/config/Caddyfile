@@ -1,5 +1,6 @@
 # Default Caddyfile for the PHP application
 {
+    # Default worker: 10, <number of CPU cores>
     frankenphp {
         worker /srv/public/worker.php 10
     }

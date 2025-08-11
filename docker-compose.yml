@@ -25,7 +25,6 @@ services:
             - ./docker/nginx/ssl:/etc/nginx/ssl:ro
         depends_on:
             - php
-            - mailpit
 
     node:
         image: node:22-alpine
@@ -48,7 +47,3 @@ services:
     queue:
         <<: *php
         command: php artisan queue:work --timeout=0
-
-    mailpit:
-        image: axllent/mailpit
-        restart: unless-stopped
