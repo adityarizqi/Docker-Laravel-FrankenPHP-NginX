@@ -28,14 +28,10 @@ mkcert -install -cert-file ./docker/nginx/ssl/cert.pem -key-file ./docker/nginx/
 
 > **Note**: If you are on Windows using WSL2, you have to run this command on the Windows side. This is because mkcert needs to install the certificates in your Windows trust store, not on Linux.
 
-### Step 3: Environment Setup
-
--   Copy the `.env.example` file to `.env`
-    > **Note**: Make sure you have installed the SSL certificates before proceeding.
-
-### Step 4: Start the Containers
+### Step 3: Start the Containers
 
 -   Build the images and start the containers with:
+    > **Note**: Make sure you have installed the SSL certificates before proceeding.
 
 ```shell
 docker-compose up -d
