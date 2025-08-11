@@ -31,11 +31,12 @@ mkcert -install -cert-file ./docker/nginx/ssl/cert.pem -key-file ./docker/nginx/
 ### Step 3: Start the Containers
 
 -   Build the images and start the containers with:
-    > **Note**: Make sure you have installed the SSL certificates before proceeding.
 
 ```shell
 docker-compose up -d
 ```
+
+> **Note**: Make sure you have installed the SSL certificates before proceeding.
 
 Make necessary scripts executable:
 
