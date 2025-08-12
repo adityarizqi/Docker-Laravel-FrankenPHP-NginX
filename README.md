@@ -9,8 +9,11 @@ To use it:
 ## Docker Setup Guide
 
 ### Step 1: Copy to your Laravel Project
-
-Copy all files and folders from this repository into the root of your existing Laravel project. If you are on Windows, I recommend using WSL2, or at least utilize Git Bash instead of CMD or PowerShell to execute the next commands along.
+- Go to the [Releases page](https://github.com/adityarizqi/Docker-Laravel-FrankenPHP-NginX/releases)  
+- Download the **`Source code (zip)`** from this release.  
+- Extract the contents into the root folder of your existing Laravel project.
+  
+> **Tip:** If you are on Windows, I recommend using WSL2, or at least utilize Git Bash instead of CMD or PowerShell to execute the next commands along.
 
 ### Step 2: Download mkcert
 
