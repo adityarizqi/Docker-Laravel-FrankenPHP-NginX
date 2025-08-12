@@ -59,4 +59,4 @@ Install dependencies and prepare framework:
 
 > **Note**: The `./` at the beginning of each command is an alias to `docker compose exec php`, allowing you to run commands within the container without entering it.
 
-You're done! Open https://laravel.docker.localhost to view application.
+You're done! Open https://laravel.docker.localhost to view the application.
