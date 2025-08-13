@@ -100,7 +100,8 @@ RUN cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 # Select the final image based on the ENVIRONMENT build argument
 FROM ${ENVIRONMENT}
 
-COPY ./config/Caddyfile /etc/frankenphp/Caddyfile
+# Serve the application using FrankenPHP
+CMD ["php", "artisan", "octane:frankenphp", "--watch", "--host=0.0.0.0", "--port=8080"]
 
 # Set the working directory
 WORKDIR /srv
