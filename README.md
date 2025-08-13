@@ -6,6 +6,13 @@ To use it:
 - Copy all files and folders from this repository into the root of your existing Laravel project.
 - Follow the steps below to set up Docker, generate SSL certificates, and start your Laravel Octane app in seconds.
 
+**Static Test Results**
+Comparison of performance measurements between *without* and *with* FrankenPHP.   The images below show the difference under static test conditions.
+
+| Without FrankenPHP | With FrankenPHP |
+| --- | --- |
+| ![Without FrankenPHP](https://dl.dropboxusercontent.com/scl/fi/lb72q5zzi6q2f6bdny5pn/with_out_franken_php.jpeg?rlkey=vew9og9gda25u7ofdq2vlsesd&e=1&st=d3nlrnvs&dl=0) | ![With FrankenPHP](https://dl.dropboxusercontent.com/scl/fi/ibskidxfhtgsx55ykrolw/with_franken_php.jpeg?rlkey=j9dnhycufuttrrcptjm4h786m&e=1&st=yqofcch2&dl=0) |
+
 ## Prerequisites
 
 Install Laravel Octane into your project:
@@ -41,19 +48,19 @@ mkcert -install -cert-file ./docker/nginx/ssl/cert.pem -key-file ./docker/nginx/
 
 ### Step 3: Start the Containers
 
--   Build the images and start the containers:
+Build the images and start the containers:
 
-    - **Development**:
+- **Development**:
 
-      ```shell
-      docker-compose -f docker-compose.development.yml up -d
-      ```
+    ```shell
+    docker-compose -f docker-compose.development.yml up -d
+    ```
 
-    - **Production**:
+- **Production**:
 
-      ```shell
-      docker-compose -f docker-compose.production.yml up -d
-      ```
+    ```shell
+    docker-compose -f docker-compose.production.yml up -d
+    ```
 
 > **Note**: Make sure you have installed the SSL certificates before proceeding.
 
@@ -63,7 +70,7 @@ Make necessary scripts executable:
 chmod +x ./php ./composer ./npm
 ```
 
-Install dependencies and prepare framework:
+Install dependencies and prepare framework (optional):
 
 ```shell
 ./composer install
