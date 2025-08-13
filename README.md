@@ -33,11 +33,19 @@ mkcert -install -cert-file ./docker/nginx/ssl/cert.pem -key-file ./docker/nginx/
 
 ### Step 3: Start the Containers
 
--   Build the images and start the containers with:
+-   Build the images and start the containers:
 
-```shell
-docker-compose up -d
-```
+    - **Development**:
+
+      ```shell
+      docker-compose -f docker-compose.development.yml up -d
+      ```
+
+    - **Production**:
+
+      ```shell
+      docker-compose -f docker-compose.production.yml up -d
+      ```
 
 > **Note**: Make sure you have installed the SSL certificates before proceeding.
 
@@ -52,11 +60,13 @@ Install dependencies and prepare framework:
 ```shell
 ./composer install
 ./npm install
-./npm run build
+./npm run dev
 ./php artisan key:generate
 ./php artisan migrate:fresh --seed
 ```
 
-> **Note**: The `./` at the beginning of each command is an alias to `docker compose exec php`, allowing you to run commands within the container without entering it.
+> **Note**: The `./` at the beginning of each command is an alias to `docker compose -f docker-compose.development.yml exec php`, allowing you to run commands within the container without entering it.
 
 You're done! Open https://laravel.docker.localhost to view the application.
+
+> **Tip**: `./npm run dev` starts Vite's hot-reload server. For a production-ready asset build, use `./npm run build` instead.
