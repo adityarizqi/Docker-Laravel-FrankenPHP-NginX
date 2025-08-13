@@ -16,7 +16,7 @@ putenv('APP_PUBLIC_PATH');
 $stub = __DIR__ . '/../vendor/laravel/octane/bin/frankenphp-worker.php';
 $needsCleanup = !file_exists($stub);
 if ($needsCleanup) {
-    mkdir(dirname($stub), 0777, true);
+    mkdir(dirname($stub), 0755, true);
     file_put_contents($stub, "<?php\n");
 }
 
