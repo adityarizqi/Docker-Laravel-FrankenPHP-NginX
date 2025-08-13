@@ -6,6 +6,14 @@ To use it:
 - Copy all files and folders from this repository into the root of your existing Laravel project.
 - Follow the steps below to set up Docker, generate SSL certificates, and start your Laravel Octane app in seconds.
 
+## Prerequisites
+
+Install Laravel Octane into your project:
+
+```shell
+composer require laravel/octane
+```
+
 ## Docker Setup Guide
 
 ### Step 1: Copy to your Laravel Project
