@@ -38,7 +38,7 @@ mkcert -install -cert-file ./docker/nginx/ssl/cert.pem -key-file ./docker/nginx/
     - **Development**:
 
       ```shell
-      docker-compose -f docker-composer.development.yml up -d
+      docker-compose -f docker-compose.development.yml up -d
       ```
 
     - **Production**:
@@ -65,7 +65,7 @@ Install dependencies and prepare framework:
 ./php artisan migrate:fresh --seed
 ```
 
-> **Note**: The `./` at the beginning of each command is an alias to `docker compose -f docker-composer.development.yml exec php`, allowing you to run commands within the container without entering it.
+> **Note**: The `./` at the beginning of each command is an alias to `docker compose -f docker-compose.development.yml exec php`, allowing you to run commands within the container without entering it.
 
 You're done! Open https://laravel.docker.localhost to view the application.
 

@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-docker compose -f docker-composer.development.yml exec -u composer php php "$@"
+docker compose -f docker-compose.development.yml exec -u composer php php "$@"
 
