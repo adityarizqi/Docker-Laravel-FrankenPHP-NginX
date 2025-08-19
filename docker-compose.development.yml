@@ -47,3 +47,10 @@ services:
     queue:
         <<: *php
         command: php artisan queue:work --timeout=0
+
+    mailpit:
+        image: axllent/mailpit:latest
+        restart: unless-stopped
+        ports:
+            - "1025:1025"
+            - "8025:8025"

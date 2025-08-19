@@ -83,5 +83,6 @@ Install dependencies and prepare framework (optional):
 > **Note**: The `./` at the beginning of each command is an alias to `docker compose -f docker-compose.development.yml exec php`, allowing you to run commands within the container without entering it.
 
 You're done! Open https://laravel.docker.localhost to view the application.
+Visit https://mailpit.docker.localhost to inspect outgoing emails.
 
 > **Tip**: `./npm run dev` starts Vite's hot-reload server. For a production-ready asset build, use `./npm run build` instead.
